@@ -3,7 +3,9 @@
     <h1>{{ message }}</h1>
     <h3>{{ fullMessage }}</h3>    
     <button @click="clicked">Click</button>
-    <button @click="parentClicked">Parent Click</button>    
+    <button @click="parentClicked">Parent Click</button>
+
+    <router-link to="hello-ts">hello-ts</router-link>
   </div>
 </template>
 
@@ -25,10 +27,25 @@
     }
 
     clicked () {
-      // undefined
-      // console.log(super.clicked)
+      // console.log(this)
+
+      // message, clicked, parentClicked are all bound on this
+      // not it's prototype
+      // so super.clicked is none
+
+      // super.clicked()
+      /*
+      Uncaught TypeError: Cannot read property 'call' of undefined
+        at VueComponent.Hello.clicked
+      */
 
       console.log('clicked');
+    }
+
+    beforeRouteEnter (to, from, next) {
+      console.log('Enter')
+
+      next()
     }
   }
 </script>
