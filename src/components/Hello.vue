@@ -9,6 +9,10 @@
     <h1 v-colorDirective="{ color: 'white', background: 'green' }">test color directive</h1>
 
     <MyCheckbox :title="checkbox.title" :value="checkbox.value" v-model="checkbox.checked" /> {{ checkbox.checked }}
+
+    <p>
+      <router-link to="counter">turn to counter</router-link>
+    </p>
   </div>
 </template>
 
