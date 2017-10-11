@@ -7,6 +7,8 @@
     <router-link to="hello-ts">hello-ts</router-link>
 
     <h1 v-colorDirective="{ color: 'white', background: 'green' }">test color directive</h1>
+
+    <MyCheckbox :title="checkbox.title" :value="checkbox.value" v-model="checkbox.checked" /> {{ checkbox.checked }}
   </div>
 </template>
 
@@ -16,14 +18,29 @@
 
   import colorDirective from '../directives/color'
 
+  // .vue is required in path when import
+  import MyCheckbox from './MyCheckbox.vue'
+
   @Component({
     directives: {
       colorDirective
+    },
+
+    components: {
+      MyCheckbox
     }
   })
   export default class Hello extends Vue {
     message = 'Hello'
 
+    checkbox = {
+      title: 'Fancy checkbox',
+      value: 'checkbox-id',
+      checked: true
+    }
+
+    // type: String is type parameter require by Vue
+    // msg: string is type declaration in ts
     @Prop({ type: String, default: 'Vue' }) msg: string
 
     get fullMessage () {
