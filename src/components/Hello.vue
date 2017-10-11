@@ -3,7 +3,6 @@
     <h1>{{ message }}</h1>
     <h3>{{ fullMessage }}</h3>    
     <button @click="clicked">Click</button>
-    <button @click="parentClicked">Parent Click</button>
 
     <router-link to="hello-ts">hello-ts</router-link>
 
@@ -12,9 +11,8 @@
 </template>
 
 <script lang="ts">
-  // import Vue from 'vue'
-  import Parent from './Parent'
-  import Component from 'vue-class-component'
+  import Vue from 'vue'
+  import { Component, Prop } from 'vue-property-decorator'
 
   import colorDirective from '../directives/color'
 
@@ -23,11 +21,13 @@
       colorDirective
     }
   })
-  export default class Hello extends Parent {
-    message = 'Hello Vue'
+  export default class Hello extends Vue {
+    message = 'Hello'
+
+    @Prop({ type: String, default: 'Vue' }) msg: string
 
     get fullMessage () {
-      return `${this.message} from Typescript`
+      return `${this.message} ${this.msg}`
     }
 
     created () {
@@ -35,18 +35,6 @@
     }
 
     clicked () {
-      // console.log(this)
-
-      // message, clicked, parentClicked are all bound on this
-      // not it's prototype
-      // so super.clicked is none
-
-      // super.clicked()
-      /*
-      Uncaught TypeError: Cannot read property 'call' of undefined
-        at VueComponent.Hello.clicked
-      */
-
       console.log('clicked');
     }
 
