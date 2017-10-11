@@ -6,6 +6,8 @@
     <button @click="parentClicked">Parent Click</button>
 
     <router-link to="hello-ts">hello-ts</router-link>
+
+    <h1 v-colorDirective="{ color: 'white', background: 'green' }">test color directive</h1>
   </div>
 </template>
 
@@ -14,7 +16,13 @@
   import Parent from './Parent'
   import Component from 'vue-class-component'
 
-  @Component({})
+  import colorDirective from '../directives/color'
+
+  @Component({
+    directives: {
+      colorDirective
+    }
+  })
   export default class Hello extends Parent {
     message = 'Hello Vue'
 
