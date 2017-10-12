@@ -17,6 +17,10 @@
     <p>
       <router-link to="users">turn to users</router-link>
     </p>
+
+    <p>
+      <router-link to="search">turn to search</router-link>
+    </p>
   </div>
 </template>
 
