@@ -5,6 +5,7 @@ import HelloTS from '@/components/HelloTS.vue'
 import Counter from '@/components/Counter.vue'
 import Users from '@/components/Users.vue'
 import Search from '@/components/Search.vue'
+import Aop from '@/components/Aop.vue'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/search',
       name: 'Search',
       component: Search
+    },
+    {
+      path: '/aop',
+      name: 'Aop',
+      component: Aop
     }
   ]
 })

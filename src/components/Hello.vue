@@ -21,6 +21,10 @@
     <p>
       <router-link to="search">turn to search</router-link>
     </p>
+
+    <p>
+      <router-link to="aop">turn to aop test</router-link>
+    </p>
   </div>
 </template>
 
