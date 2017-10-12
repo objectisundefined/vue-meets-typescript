@@ -23,7 +23,11 @@
     </p>
 
     <p>
-      <router-link to="aop">turn to aop test</router-link>
+      <router-link to="aop">turn to Aop test</router-link>
+    </p>
+
+    <p>
+      <router-link to="ioc">turn to Ioc test</router-link>
     </p>
   </div>
 </template>

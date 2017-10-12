@@ -6,6 +6,7 @@ import Counter from '@/components/Counter.vue'
 import Users from '@/components/Users.vue'
 import Search from '@/components/Search.vue'
 import Aop from '@/components/Aop.vue'
+import Ioc from '@/components/Ioc.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/aop',
       name: 'Aop',
       component: Aop
+    },
+    {
+      path: '/ioc',
+      name: 'Ioc',
+      component: Ioc
     }
   ]
 })

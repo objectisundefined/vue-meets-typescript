@@ -27,7 +27,24 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      // use webpack dev proxy
+
+      // from local
+      '/users': {
+        target: 'http://localhost:3000/static/users.json',
+        ignorePath: true,
+        secure: false
+      }
+
+      // docs
+      // https://webpack.github.io/docs/webpack-dev-server.html#proxy
+
+      // form remote api
+      /*
+      '/users': 'http://jsonplaceholder.typicode.com/*'
+      */
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

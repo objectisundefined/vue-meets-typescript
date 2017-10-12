@@ -10,12 +10,16 @@
   import Component, { createDecorator } from 'vue-class-component'
 
   const Log = (str?: string) => createDecorator((component, key) => {
+    console.log('Log()', component, key)
+
     console.log('Component:', component)
     console.log('Decorated key:', key)
   })
 
   // component: any if required, otherwise .cache can't be reliazed
   const NoCache = createDecorator((component: any, key) => {
+    console.log('NoCache', component, key)
+
     if (component.computed && component.computed[key]) {
       component.computed[key].cache = false
     } else {

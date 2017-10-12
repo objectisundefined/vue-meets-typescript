@@ -11,31 +11,7 @@
 <script lang="ts">
   import Vue from 'vue'
   import { Component, Inject } from 'vue-property-decorator'
-
-  interface User {
-    id: number
-    name: string
-    username: string
-    email: string
-    address: {
-      street: string
-      suite: string
-      city: string
-      zipcode: string
-      geo: {
-        lat: string
-        lng: string
-      }
-    },
-    phone: string
-    website: string
-    company: {
-      name: string
-      catchPhrase: string
-      bs: string
-    }
-  }
-
+  import { User } from './interfaces'
 
   @Component
   export default class Users extends Vue {
@@ -45,7 +21,11 @@
     message: string = ''
 
     created () {
-      this.http.get('https://jsonplaceholder.typicode.com/users')
+      // 'https://jsonplaceholder.typicode.com/users'
+
+      const url = '/users'
+
+      this.http.get(url)
         .then(res => {
           this.users = res.data
 

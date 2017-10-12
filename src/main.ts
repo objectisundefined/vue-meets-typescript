@@ -3,6 +3,10 @@
 
 import './hooks'
 
+import 'reflect-metadata'
+import 'core-js/es6/map'
+import 'core-js/es6/symbol'
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'

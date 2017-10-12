@@ -7,7 +7,7 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import { Component, Provide } from 'vue-property-decorator'
+  import { Component, Provide, Inject } from 'vue-property-decorator'
   import axios from 'axios'
 
   @Component
