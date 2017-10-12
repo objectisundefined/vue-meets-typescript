@@ -13,12 +13,16 @@
     <p>
       <router-link to="counter">turn to counter</router-link>
     </p>
+
+    <p>
+      <router-link to="users">turn to users</router-link>
+    </p>
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue'
-  import { Component, Prop } from 'vue-property-decorator'
+  import { Component, Prop, Provide } from 'vue-property-decorator'
 
   import colorDirective from '../directives/color'
 
@@ -35,7 +39,7 @@
     }
   })
   export default class Hello extends Vue {
-    message = 'Hello'
+   message = 'Hello'
 
     checkbox = {
       title: 'Fancy checkbox',
