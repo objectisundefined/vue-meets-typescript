@@ -66,9 +66,8 @@
       const id = 1
 
       return this.http.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-        .then(res => res.json())
-        .then(user => {
-          this.userName = user.name
+        .then(res => {
+          this.userName = res.data.name
         })
         .catch(() => {
           console.log('user [id: ' + id + '] was not found')
