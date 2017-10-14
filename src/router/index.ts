@@ -7,6 +7,7 @@ import Users from '@/components/Users.vue'
 import Search from '@/components/Search.vue'
 import Aop from '@/components/Aop.vue'
 import Ioc from '@/components/Ioc.vue'
+import Store from '@/components/Store.vue'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/ioc',
       name: 'Ioc',
       component: Ioc
+    },
+    {
+      path: '/store',
+      name: 'Store',
+      component: Store
     }
   ]
 })
