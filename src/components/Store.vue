@@ -57,11 +57,11 @@
     // @Action incrementAsync
     @CounterAction incrementAsync
 
-    @Getter todos: Todo[]
+    @Getter('todos/todos') todos: Todo[]
 
-    @Mutation(ADD_TODO) addTodo
-    @Mutation(TOGGLE_TODO) toggleTodo
-    @Action addTodoAsync
+    @Mutation('todos/' + ADD_TODO) addTodo
+    @Mutation('todos/' + TOGGLE_TODO) toggleTodo
+    @Action('todos/addTodoAsync') addTodoAsync
 
     text: string = ''
 

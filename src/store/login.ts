@@ -19,7 +19,7 @@ const mutations: MutationTree<LoginState> = {
 }
 
 const actions: ActionTree<LoginState, any> = {
-  signIn ({ commit }) {
+  signIn ({ commit, dispatch }) {
     commit(SIGN_IN)
   },
   signOut ({ commit }) {

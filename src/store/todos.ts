@@ -1,6 +1,6 @@
-import { MutationTree, ActionTree, GetterTree } from 'vuex'
+import { MutationTree, ActionTree, GetterTree, Module } from 'vuex'
 
-import { Todo, TodoState, ADD_TODO, TOGGLE_TODO, RootState } from './types'
+import { Todo, TodoState, ADD_TODO, TOGGLE_TODO, RootState, SIGN_OUT } from './types'
 
 let id = 1
 
@@ -39,6 +39,9 @@ const actions: ActionTree<TodoState, RootState> = {
         commit(ADD_TODO, {
           text: rootState.login.user + ': ' + res[0].title
         })
+
+        // call a root mutaion in a namespaced module
+        commit(SIGN_OUT, null, { root: true })
       })
   }
 }
@@ -51,5 +54,6 @@ export default {
   state,
   mutations,
   actions,
-  getters
-}
+  getters,
+  namespaced: true
+} as Module<TodoState, RootState>
