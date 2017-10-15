@@ -18,6 +18,7 @@ export interface TodoState {
 
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
+export const ADD_TODO_ASYNC = ''
 
 export interface LoginState {
   user: string
@@ -31,4 +32,20 @@ export interface RootState {
   counter: CounterState
   todos: TodoState
   login: LoginState
+}
+
+export interface Payload {
+  type: string,
+  payload?: any
+}
+
+export interface HistoryState {
+  history: Payload[]
+}
+
+export const LOAD_HISTORY = 'LOAD_HISTORY'
+export const ADD_HISTORY = 'ADD_HISTORY'
+
+export interface PluginOptions {
+  persist?: boolean
 }

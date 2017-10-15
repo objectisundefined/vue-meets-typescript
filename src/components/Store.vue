@@ -8,9 +8,9 @@
 
     <h1>Count: {{ count }}</h1>
     stateCounter: {{ stateCounter }}
-    <button @click="increment">increment</button>
-    <button @click="decrement">decrement</button>
-    <button @click="incrementAsync">increment async</button>
+    <button @click="() => increment()">increment</button>
+    <button @click="() => decrement()">decrement</button>
+    <button @click="() => incrementAsync()">increment async</button>
 
     <hr>
 
@@ -53,6 +53,9 @@
     // @Mutation('counter/' + INCREMENT) increment
     // @Mutation('counter/' + DECREMENT) decrement
     @CounterMutation(INCREMENT) increment
+    // use () => increment()
+    // otherwise the event argument will be pass to the function as payload
+    // though it doesn't make any infulence
     @CounterMutation(DECREMENT) decrement
     // @Action incrementAsync
     @CounterAction incrementAsync
