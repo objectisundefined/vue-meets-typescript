@@ -1,4 +1,4 @@
-import { MutationTree, ActionTree, GetterTree, Store } from 'vuex'
+import { MutationTree, ActionTree, GetterTree, Store, Module } from 'vuex'
 
 import { CounterState, INCREMENT, INCREMENT_N, DECREMENT } from './types'
 
@@ -38,5 +38,6 @@ export default {
   state,
   mutations,
   actions,
-  getters
-}
+  getters,
+  namespaced: true
+} as Module<CounterState, any>

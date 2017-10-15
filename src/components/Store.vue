@@ -30,9 +30,13 @@
 <script lang="ts">
   import Vue from 'vue'
   import { Component } from 'vue-property-decorator'
-  import { Mutation, State, Getter, Action } from 'vuex-class'
+  import { Mutation, State, Getter, Action, namespace } from 'vuex-class'
 
   import store, { INCREMENT, DECREMENT, Todo, ADD_TODO, TOGGLE_TODO } from '../store'
+
+  const CounterGetter = namespace('counter', Getter)
+  const CounterMutation = namespace('counter', Mutation)
+  const CounterAction = namespace('counter', Action)
 
   @Component
   export default class Store extends Vue {
@@ -43,18 +47,21 @@
     @Action signOut
 
     @State(state => state.counter.count) stateCounter
-    @Getter count
+    // @Getter count
+    @CounterGetter count
 
-    @Mutation(INCREMENT) increment
-    @Mutation(DECREMENT) decrement
+    // @Mutation('counter/' + INCREMENT) increment
+    // @Mutation('counter/' + DECREMENT) decrement
+    @CounterMutation(INCREMENT) increment
+    @CounterMutation(DECREMENT) decrement
+    // @Action incrementAsync
+    @CounterAction incrementAsync
 
     @Getter todos: Todo[]
 
     @Mutation(ADD_TODO) addTodo
-    @Action addTodoAsync
     @Mutation(TOGGLE_TODO) toggleTodo
-
-    @Action incrementAsync
+    @Action addTodoAsync
 
     text: string = ''
 
