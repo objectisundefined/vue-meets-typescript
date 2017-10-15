@@ -12,6 +12,7 @@ export default new Vuex.Store({
     counter,
     todos
   },
+  strict: true,
   plugins: [
     createLogger({})
   ]

@@ -42,7 +42,7 @@ const actions: ActionTree<CounterState, any> = {
 
 export default {
   state,
-  getters,
   mutations,
-  actions
+  actions,
+  getters
 }

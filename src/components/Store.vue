@@ -1,7 +1,13 @@
 <template>
   <div>
-    {{ stateCounter }}
+    <button v-if="!logined" @click="signIn">please sign in</button>
+    <p v-else>
+      Hello {{ user }}
+      <button @click="signOut">sign out</button>
+    </p>
+
     <h1>Count: {{ count }}</h1>
+    stateCounter: {{ stateCounter }}
     <button @click="increment">increment</button>
     <button @click="decrement">decrement</button>
     <button @click="incrementAsync">increment async</button>
@@ -26,8 +32,16 @@
   import { INCREMENT, DECREMENT } from '../store/counter'
   import { Todo, ADD_TODO, TOGGLE_TODO } from '../store/todos'
 
+  import store from '../store'
+
   @Component
   export default class Store extends Vue {
+    @Getter logined
+    @Getter user
+
+    @Action signIn
+    @Action signOut
+
     @State(state => state.counter.count) stateCounter
     @Getter count
 
@@ -45,6 +59,22 @@
 
     created () {
       console.log(this.stateCounter)
+    }
+
+    beforeRouteEnter (from, to, next) {
+      import('../store/login').then(({ load }) => {
+        load(store)
+
+        next()
+      })
+    }
+
+    beforeRouteLeave (from, to, next) {
+      store.unregisterModule('login')
+
+      next()
+
+      console.log(store)
     }
   }
 </script>

@@ -29,6 +29,10 @@
     <p>
       <router-link to="ioc">turn to Ioc test</router-link>
     </p>
+
+    <p>
+      <router-link to="store">turn to vuex store test</router-link>
+    </p>
   </div>
 </template>
 

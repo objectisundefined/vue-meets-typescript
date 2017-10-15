@@ -50,7 +50,7 @@ const getters: GetterTree<TodoState, any> = {
 
 export default {
   state,
-  getters,
   mutations,
-  actions
+  actions,
+  getters
 }
