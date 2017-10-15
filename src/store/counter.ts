@@ -1,16 +1,10 @@
 import { MutationTree, ActionTree, GetterTree, Store } from 'vuex'
 
-export interface CounterState {
-  count: number
-}
+import { CounterState, INCREMENT, INCREMENT_N, DECREMENT } from './types'
 
 const state: CounterState = {
   count: 0
 }
-
-export const INCREMENT = 'INCREMENT'
-export const INCREMENT_N = 'INCREMENT_N'
-export const DECREMENT = 'DECREMENT'
 
 const mutations: MutationTree<CounterState> = {
   [INCREMENT] (state) {

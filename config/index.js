@@ -35,6 +35,11 @@ module.exports = {
         target: 'http://localhost:3000/static/users.json',
         ignorePath: true,
         secure: false
+      },
+      '/todos': {
+        target: 'http://localhost:3000/static/todos.json',
+        ignorePath: true,
+        secure: false
       }
 
       // docs

@@ -15,6 +15,9 @@
     <hr>
 
     <h1>Todos</h1>
+    <input type="text" v-model="text">
+    <button @cilck="addTodo({ text })">add todo</button>
+    <button @click="addTodoAsync">add todo async</button>
     <ul>
       <li v-for="todo in todos" :key="todo.id">
         <input type="checkbox" :checked="todo.completed" @change="toggleTodo({ id: todo.id })">
@@ -29,10 +32,7 @@
   import { Component } from 'vue-property-decorator'
   import { Mutation, State, Getter, Action } from 'vuex-class'
 
-  import { INCREMENT, DECREMENT } from '../store/counter'
-  import { Todo, ADD_TODO, TOGGLE_TODO } from '../store/todos'
-
-  import store from '../store'
+  import store, { INCREMENT, DECREMENT, Todo, ADD_TODO, TOGGLE_TODO } from '../store'
 
   @Component
   export default class Store extends Vue {
@@ -45,12 +45,13 @@
     @State(state => state.counter.count) stateCounter
     @Getter count
 
-    @Getter todos: Todo[]
-
     @Mutation(INCREMENT) increment
-
     @Mutation(DECREMENT) decrement
 
+    @Getter todos: Todo[]
+
+    @Mutation(ADD_TODO) addTodo
+    @Action addTodoAsync
     @Mutation(TOGGLE_TODO) toggleTodo
 
     @Action incrementAsync
@@ -73,8 +74,6 @@
       store.unregisterModule('login')
 
       next()
-
-      console.log(store)
     }
   }
 </script>

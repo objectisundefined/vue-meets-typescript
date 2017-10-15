@@ -1,16 +1,8 @@
 import { MutationTree, ActionTree, GetterTree } from 'vuex'
 
+import { Todo, TodoState, ADD_TODO, TOGGLE_TODO, RootState } from './types'
+
 let id = 1
-
-export interface Todo {
-  id: number
-  text: string
-  completed: boolean
-}
-
-export interface TodoState {
-  todos: Todo[]
-}
 
 const state: TodoState = {
   todos: [
@@ -19,9 +11,6 @@ const state: TodoState = {
     { id: id++, text: 'learn vuex', completed: false }
   ]
 }
-
-export const ADD_TODO = 'ADD_TODO'
-export const TOGGLE_TODO = 'TOGGLE_TODO'
 
 const mutations: MutationTree<TodoState> = {
   [ADD_TODO] (state, payload) {
@@ -42,7 +31,17 @@ const mutations: MutationTree<TodoState> = {
   }
 }
 
-const actions: ActionTree<TodoState, any> = {}
+const actions: ActionTree<TodoState, RootState> = {
+  addTodoAsync ({ commit, rootState }) {
+    fetch('/todos')
+      .then(res => res.json())
+      .then(res => {
+        commit(ADD_TODO, {
+          text: rootState.login.user + ': ' + res[0].title
+        })
+      })
+  }
+}
 
 const getters: GetterTree<TodoState, any> = {
   todos: state => state.todos

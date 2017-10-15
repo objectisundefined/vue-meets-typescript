@@ -1,17 +1,11 @@
 import { Store, GetterTree, MutationTree, ActionTree } from 'vuex'
 
-export interface LoginState {
-  user: string
-  logined: boolean
-}
+import { LoginState, SIGN_IN, SIGN_OUT } from './types'
 
 const state: LoginState = {
   user: '',
   logined: false
 }
-
-const SIGN_IN = 'SING_IN'
-const SIGN_OUT = 'SIGN_OUT'
 
 const mutations: MutationTree<LoginState> = {
   [SIGN_IN] (state) {
